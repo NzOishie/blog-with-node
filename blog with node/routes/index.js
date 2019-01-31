@@ -1,5 +1,7 @@
 var express = require('express');
 var router = express.Router();
+const session = require('express-session');
+
 
 let Blog = require('../models/blog.js');
 let User = require('../models/user.js');
@@ -11,7 +13,9 @@ router.get ('/', function(req, res, next) {
      console.log(err)
    }
    else{
+       console.log(req.session.user);
    var isLoggedIn = req.session.user ? true : false;
+   console.log(isLoggedIn);
      res.render('index', {
        isLoggedIn: isLoggedIn,
        blogs : blogs });
@@ -22,7 +26,7 @@ router.get ('/', function(req, res, next) {
 
 
 
-router.get('/blogs/add',function (req,res,next) {
+router.get('/blogs/add',requiresLogin,function (req,res,next) {
   res.render('add');
 });
 //Single blog
@@ -43,7 +47,8 @@ router.get('/blog/edit/:id',function (req,res,next) {
 });
 
 function requiresLogin(req, res, next) {
-    if (req.session && req.session.id && req.session.role ==='User') {
+
+    if (req.session && req.session.user && req.session.user.role ==='User') {
         return next();
     } else {
         res.redirect('/users/login');
