@@ -1,0 +1,8 @@
+This project have following features-
+SignIn/SignUp
+Create User (Username, Password with Role(Admin, Agent, User))
+Only Agent can edit 
+The only user can creates blog
+On the home page list of the blog will showing title and first 100 words of descriptions
+On click of blog title, details  page will show (Title+Descriptions)
+Unit testing
