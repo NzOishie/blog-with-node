@@ -45,7 +45,7 @@ router.get('/blog/edit/:id',requiresLoginEdit, function (req,res,next) {
         });
     });
 });
-
+//Only User can create blog - middleware
 function requiresLoginCreate(req, res, next) {
 
     if (req.session && req.session.user && req.session.user.role ==='User') {
@@ -54,7 +54,7 @@ function requiresLoginCreate(req, res, next) {
         res.redirect('/users/login');
     }
 }
-
+//Only Agent can edit blog - middleware
 function requiresLoginEdit(req, res, next) {
 
     if (req.session && req.session.user && req.session.user.role ==='Agent') {
@@ -64,7 +64,7 @@ function requiresLoginEdit(req, res, next) {
     }
 }
 
-router.post('/blogs/add',requiresLoginCreate,function (req,res,next) {
+router.post('/blogs/add',function (req,res,next) {
   let blog = new Blog();
   blog.title = req.body.title;
   blog.author = req.body.author;

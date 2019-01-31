@@ -12,6 +12,7 @@ const session = require('express-session');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
+//database connection
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/blogs').then(function (conn) {
     // console.log(conn);
@@ -32,6 +33,7 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+//body-perser
 app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
@@ -42,7 +44,7 @@ app.use(session({
     resave: false,
     saveUninitialized: true
 }));
-
+//config passport
 require('./config/passport')(passport);
 // Passport Middleware
 app.use(passport.initialize());

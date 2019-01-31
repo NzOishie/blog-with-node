@@ -26,6 +26,7 @@ router.post('/signup', function(req, res, next) {
     user_name: user_name,
     password: password
   });
+  //Encoding the password
   bcrypt.genSalt(10, function(err, salt){
     bcrypt.hash(newUser.password, salt, function(err, hash){
       if(err){
@@ -44,7 +45,7 @@ router.post('/signup', function(req, res, next) {
 
 });
 
-// Login Form
+// Login
 router.get('/login', function(req, res){
   res.render('log-in');
 });
@@ -73,7 +74,7 @@ router.post('/login', function(req, res){
     })
   });
   })
-
+//log out
 router.get('/logout', function(req, res, next) {
   if (req.session) {
     // delete session object
