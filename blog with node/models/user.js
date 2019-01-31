@@ -3,11 +3,11 @@ let mongoose = require('mongoose');
 let userSchema= mongoose.Schema({
     name: {
         type: String,
-        require:true
+        require:false
     },
     email: {
         type: String,
-        require:true
+        require:false
     },
     role: {
         type: String,

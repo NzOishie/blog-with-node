@@ -26,7 +26,7 @@ router.get ('/', function(req, res, next) {
 
 
 
-router.get('/blogs/add',requiresLogin,function (req,res,next) {
+router.get('/blogs/add',requiresLoginCreate,function (req,res,next) {
   res.render('add');
 });
 //Single blog
@@ -38,7 +38,7 @@ router.get('/blog/:id',function (req,res,next) {
     });
 });
 //Edit blog
-router.get('/blog/edit/:id',function (req,res,next) {
+router.get('/blog/edit/:id',requiresLoginEdit, function (req,res,next) {
     Blog.findById(req.params.id,function (err,blog) {
         res.render('edit',{
             blog:blog
@@ -46,7 +46,7 @@ router.get('/blog/edit/:id',function (req,res,next) {
     });
 });
 
-function requiresLogin(req, res, next) {
+function requiresLoginCreate(req, res, next) {
 
     if (req.session && req.session.user && req.session.user.role ==='User') {
         return next();
@@ -55,7 +55,16 @@ function requiresLogin(req, res, next) {
     }
 }
 
-router.post('/blogs/add',requiresLogin,function (req,res,next) {
+function requiresLoginEdit(req, res, next) {
+
+    if (req.session && req.session.user && req.session.user.role ==='Agent') {
+        return next();
+    } else {
+        res.redirect('/users/login');
+    }
+}
+
+router.post('/blogs/add',requiresLoginCreate,function (req,res,next) {
   let blog = new Blog();
   blog.title = req.body.title;
   blog.author = req.body.author;

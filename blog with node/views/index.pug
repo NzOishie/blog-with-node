@@ -1,11 +1,17 @@
 extends layout
 
 block content
-  .jumbotron
-         i
-         h1.blue Personal Blog
-         ul
-             each blog, i in blogs
-                 li.list-group-item
-                    a(href='/blog/'+blog._id)= blog.title
-                    = blog.author
+    h1.blue Personal Blog
+    .jumbotron
+        each blog in blogs
+            h3
+                a(href="/blog/" + blog._id)= blog.title
+            -
+                let body = blog.body
+                let splitted_words = body.split(" ")
+                let word_count = splitted_words.length
+                if(word_count > 100){
+                let words = splitted_words.slice(0, 100)
+                words_placed = words.join(" ")
+                }
+            p= words_placed
