@@ -1,0 +1,42 @@
+extends layout
+
+block content
+
+    .container.jumbotron
+        form(method='POST', action='/users/signup')
+            .row.align-content-center
+                h2.top-margin.blue.align-content-center Please Sign up
+                .form-group.width
+                    label
+                        b Name:
+                    br
+                    input(type='textarea', name='name').form-control
+                    br
+                    br
+                    label
+                        b Email
+                    br
+                    input(type='email', name='email').form-control
+                    br
+                    br
+                    label
+                        b Role: &nbsp;&nbsp;
+                    select(name='role')
+                        option(value='Admin') Admin
+                        option(value='Agent') Agent
+                        option(value='User') User
+                    br
+                    br
+                    label
+                        b User Name:
+                    br
+                    input(type='textarea', name='user_name').form-control
+                    br
+                    br
+                    label
+                        b Password:
+                    br
+                    input(type='password', name='password').form-control
+                    br
+                    br
+                    input.btn.btn-primary(type='submit', value='Submit')

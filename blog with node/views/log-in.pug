@@ -1,0 +1,21 @@
+extends layout
+
+block content
+
+    div.jumbotron.align-content-center.jum-margin
+        h2.blue.top-margin Please Log In
+        form(method='POST', action='/users/login')
+            .form-group.align-content-center
+                label
+                    b User Name:&nbsp;
+                input(type='textarea', name='user_name').form-control
+                br
+
+                label
+                    b Password:&nbsp;&nbsp
+                input(type='password', name='password').form-control
+                br
+            input.btn.btn-primary(type='submit', value='Submit')
+
+
+

@@ -1,0 +1,25 @@
+extends layout
+
+block content
+    form(method='POST', action='/blogs/add')
+        .jumbotron
+
+            h1.blue Create a blog
+
+            .form-group.align-content-center
+                label
+                    b Title:&nbsp;
+                input(type='text', name='title').form-control
+                br
+                br
+                label
+                    b Author:&nbsp;
+                input(type='text', name='author').form-control
+                br
+                br
+                label
+                    b Details:&nbsp;&nbsp
+                textarea.form-control(rows='10', name='body')
+                br
+                br
+                input.btn.btn-primary(type='submit', value='Submit')

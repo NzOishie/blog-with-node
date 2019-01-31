@@ -1,0 +1,9 @@
+extends layout
+
+block content
+    .jumbotron
+        h1= blog.title
+        h5 Written by #{blog.author}
+        p= blog.body
+        hr
+        a.btn.btn-info(href='/blog/edit/'+blog.id) Edit

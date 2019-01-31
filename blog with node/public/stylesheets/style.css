@@ -1,0 +1,27 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  border: none;
+  outline: none;
+}
+
+a {
+  color: #00B7FF;
+}
+.border-space{
+    margin-left: 40%;
+}
+.blue{
+  color: blue;
+}
+.top-margin{
+  margin-top: 5%;
+}
+.width{
+  width:100%;
+}
+.jum-margin{
+  margin-left: 40%;
+  margin-right: 40%;
+  margin-top: 10%;
+}

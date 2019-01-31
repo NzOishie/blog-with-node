@@ -1,0 +1,27 @@
+doctype html
+html
+  head
+    title= title
+    link(rel="stylesheet", href="/stylesheets/bootstrap.css", type="text/css")
+    link(rel="stylesheet", href="/stylesheets/style.css")
+  body
+    nav.navbar.navbar-inverse
+      .container-fluid
+        .navbar-header
+          a.navbar-brand(href='/') Blog website
+        ul.nav.navbar-nav
+          li.active
+            a(href='/') Home
+          li
+            a(href='/blogs/add') Add blog
+          li
+            a(href='/users/signup') Sign Up
+          if isLoggedIn
+            li
+              a(href='/users/logout') Log Out
+          else
+            li
+              a(href='/users/login') Login
+
+    block content
+
